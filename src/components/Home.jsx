@@ -4,7 +4,7 @@ import InputCreate from "./InputCreate.jsx";
 const Home = ({ data, createTask }) => {
     return (
         <>
-            <h2>Lista de datos</h2>
+            <h2>Lista de tareas</h2>
             <InputCreate createTask={createTask} />
             <ul>
                 {data.map(item => (

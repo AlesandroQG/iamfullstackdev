@@ -34,6 +34,22 @@ const App = () => {
             console.error(error);
         }
     };
+    const deleteTask = async (id) => {
+        try {
+            const response = await fetch(`${urlApi}/id/${id}`, {
+                method: 'DELETE', // Método HTTP
+                headers: {
+                    'Content-Type': 'application/json', // Indicamos que el contenido es JSON
+                }
+            });
+            const result = await response.json();
+            console.log(result);
+            setUpdate(!update);
+            return true;
+        } catch (error) {
+            console.error(error);
+        }
+    };
     useEffect(() => {
         fetchData();
     }, [update])
@@ -50,7 +66,7 @@ const App = () => {
                         <Route path="/" element={<Home data={data} createTask={createTask} />} />
                         
                         {data.map(item => (
-                            <Route key={item._id} path={`/${item._id}`} element={<ItemDetailPage item={item} />} />
+                            <Route key={item._id} path={`/${item._id}`} element={<ItemDetailPage item={item} onDelete={deleteTask} />} />
                         ))
                         }
                     </Routes>
