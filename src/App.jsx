@@ -6,7 +6,7 @@ import ItemDetailPage from "./components/ItemDetailPage.jsx";
 const App = () => {
     const [data, setData] = useState(null);
     const [update, setUpdate] = useState(false);
-    const urlApi = "http://localhost:3000";
+    const urlApi = import.meta.env.VITE_APP_API_URL || "http://localhost:3000";
     const fetchData = async () => {
         try {
             const response = await fetch(urlApi);
